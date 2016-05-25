@@ -1,0 +1,8 @@
+# Object Files
+*.o
+*.d
+*.map
+*.elf
+
+# Executables
+*.hex
