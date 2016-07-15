@@ -54,7 +54,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 
 #include "app.h"
-
+#include "proj_utils.h"
 // *****************************************************************************
 // *****************************************************************************
 // Section: Global Data Definitions
@@ -117,12 +117,16 @@ void APP_Initialize ( void )
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
 
-    
+    appData.tmrHandle = DRV_TMR_Open(DRV_TMR_INDEX_0, 0);
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
 }
 
+void APP_TimerCallback( uintptr_t context, uint32_t alarmCount )
+{
+    tmrIntTriggered = true;
+}
 
 /******************************************************************************
   Function:
@@ -142,22 +146,38 @@ void APP_Tasks ( void )
         case APP_STATE_INIT:
         {
             bool appInitialized = true;
-       
-        
+            tmrIntTriggered = 0;
+            DRV_TMR_AlarmRegister(appData.tmrHandle, 65500, true, 0, APP_TimerCallback);
+            DRV_TMR_AlarmEnable(appData.tmrHandle, true);
+            DRV_TMR_Start(appData.tmrHandle);
+setbuf(stdout, NULL);
+
             if (appInitialized)
             {
-            
-                appData.state = APP_STATE_SERVICE_TASKS;
+               appData.state = APP_STATE_WAIT_SCAN;
             }
             break;
         }
 
         case APP_STATE_SERVICE_TASKS:
         {
-        
+            //PRINT_STRING("HELLO\r\n");
+            //printf("sizeshort %d\n", sizeof(short));
+          //  printf("sizeint %d\n", sizeof(int));
+          //  printf("sizelong %d\n", sizeof(long));
+            printf("hello world");
+            appData.state = APP_STATE_WAIT_SCAN;
             break;
         }
 
+        case APP_STATE_WAIT_SCAN:
+        {
+            if (tmrIntTriggered){
+                appData.state = APP_STATE_SERVICE_TASKS;
+                tmrIntTriggered = 0;
+            }
+            break;
+        }
         /* TODO: implement your application state machine.*/
         
 

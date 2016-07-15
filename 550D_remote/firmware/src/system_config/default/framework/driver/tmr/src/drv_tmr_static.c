@@ -159,7 +159,7 @@ void DRV_TMR0_Initialize(void)
     /* Clear counter */ 
     PLIB_TMR_Counter16BitClear(TMR_ID_3);
     /*Set period */ 
-    PLIB_TMR_Period16BitSet(TMR_ID_3, 16000);
+    PLIB_TMR_Period16BitSet(TMR_ID_3, 65500);
     /* Initialize the data structure */
     DRV_TMR0_DATA.alarmFunc = NULL;
     DRV_TMR0_DATA.alarmCount = 0;

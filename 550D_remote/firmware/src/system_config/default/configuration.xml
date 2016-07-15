@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<configuration version="1.0.7.16">
+<configuration version="1.0.8.7">
   <General>
     <HarmonyPath path="../../.."/>
+    <Processor name="PIC32MX795F512L"/>
     <ForceOptimization flag="true"/>
+    <MergeStrategy flag="USER_ALL"/>
   </General>
   <Manifest>
     <Files>
@@ -23,12 +25,16 @@
         <Path>Header Files/framework/driver/tmr</Path>
       </File>
       <File>
+        <Name>system.h</Name>
+        <Path>Header Files/framework/system</Path>
+      </File>
+      <File>
         <Name>sys_ports.c</Name>
         <Path>Source Files/framework/system/ports/src</Path>
       </File>
       <File>
-        <Name>system.h</Name>
-        <Path>Header Files/framework/system</Path>
+        <Name>driver.h</Name>
+        <Path>Header Files/framework/driver</Path>
       </File>
       <File>
         <Name>bsp_sys_init.c</Name>
@@ -51,12 +57,12 @@
         <Path>Header Files/framework/system/devcon</Path>
       </File>
       <File>
-        <Name>sys_devcon_pic32mx.c</Name>
-        <Path>Source Files/framework/system/devcon/src</Path>
-      </File>
-      <File>
         <Name>bsp_config.h</Name>
         <Path>Header Files/bsp/pic32mx_eth_sk2</Path>
+      </File>
+      <File>
+        <Name>sys_devcon_pic32mx.c</Name>
+        <Path>Source Files/framework/system/devcon/src</Path>
       </File>
     </Files>
     <Templates>
@@ -72,7 +78,17 @@
       <Template>
         <Name>system_config.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>86A53A8A02E742DC992141E46AFED568</Checksum>
+        <Checksum>56B1101FA0E6C99D1E698A3D564713B3</Checksum>
+      </Template>
+      <Template>
+        <Name>drv_usart_static_byte_model.c</Name>
+        <Path>Source Files/app/system_config/default/framework/driver/usart/src</Path>
+        <Checksum>F402F84024FEC5555E67696D86318326</Checksum>
+      </Template>
+      <Template>
+        <Name>drv_usart_static.h</Name>
+        <Path>Header Files/app/system_config/default/framework/driver/usart</Path>
+        <Checksum>AE37BD63B6EC9F6ADD6B8006CE192FCB</Checksum>
       </Template>
       <Template>
         <Name>system_interrupt.c</Name>
@@ -90,18 +106,28 @@
         <Checksum>B4BD59D8D7C4DA95DC5E3B57755FD352</Checksum>
       </Template>
       <Template>
+        <Name>drv_usart_static_local.h</Name>
+        <Path>Header Files/app/system_config/default/framework/driver/usart/src</Path>
+        <Checksum>62F7F49D6A443F111DA38971475472FD</Checksum>
+      </Template>
+      <Template>
         <Name>app.h</Name>
         <Path>Header Files/app</Path>
       </Template>
       <Template>
         <Name>system_tasks.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>BE644D0142ACA48D9CA2E6255A02CDBA</Checksum>
+        <Checksum>9B99275933BA05C99819FD42A20BB677</Checksum>
+      </Template>
+      <Template>
+        <Name>drv_usart_static.c</Name>
+        <Path>Source Files/app/system_config/default/framework/driver/usart/src</Path>
+        <Checksum>0D7366AB1E0CE81CF0066619DFC5B683</Checksum>
       </Template>
       <Template>
         <Name>drv_tmr_static.c</Name>
         <Path>Source Files/app/system_config/default/framework/driver/tmr/src</Path>
-        <Checksum>510ABB6E371BD38F26FFC9BBCE64D9D6</Checksum>
+        <Checksum>B7454ADD8F9B44171215E3FA70FB0B0E</Checksum>
       </Template>
       <Template>
         <Name>app.c</Name>
@@ -110,7 +136,7 @@
       <Template>
         <Name>system_init.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>994B5CBDC4D50066ACD70431446ED91F</Checksum>
+        <Checksum>0B4B88B090F9F5577F8F857784222BAC</Checksum>
       </Template>
       <Template>
         <Name>sys_clk_static.c</Name>
@@ -125,7 +151,12 @@
       <Template>
         <Name>system_definitions.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>8DC02B3AC60D415682554CC6B81D1636</Checksum>
+        <Checksum>307E624FD6F9DA4977961668962E85A7</Checksum>
+      </Template>
+      <Template>
+        <Name>drv_usart_mapping.c</Name>
+        <Path>Source Files/app/system_config/default/framework/driver/usart/src</Path>
+        <Checksum>6FD05276C282527C549242F87ABC8DEB</Checksum>
       </Template>
       <Template>
         <Name>drv_tmr_mapping.c</Name>
@@ -135,6 +166,11 @@
     </Templates>
     <CompilerItems>
       <C32>
+        <Include value="C:/microchip/harmony/v1_07_01/apps/time_lapse/550D_remote/firmware/src"/>
+        <Include value="C:/microchip/harmony/v1_07_01/apps/time_lapse/550D_remote/firmware/src/system_config/default"/>
+        <Include value="C:/microchip/harmony/v1_07_01/apps/time_lapse/550D_remote/firmware/src/default"/>
+        <Include value="C:/microchip/harmony/v1_07_01/framework"/>
+        <Include value="C:/microchip/harmony/v1_07_01/apps/time_lapse/550D_remote/firmware/src/system_config/default/framework"/>
         <Include value="../../../../../bsp/pic32mx_eth_sk2"/>
       </C32>
     </CompilerItems>
