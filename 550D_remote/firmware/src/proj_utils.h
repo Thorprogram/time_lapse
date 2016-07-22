@@ -20,9 +20,11 @@ extern "C" {
 }
 #endif
 
+
 void print_str(char *s);
 void my_putc(char c);
 
+char printf_buffer[20];
 
     #define PRINT_STRING(a) print_str(a)
 

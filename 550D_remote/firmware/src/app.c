@@ -77,6 +77,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 */
 
 APP_DATA appData;
+char *printf_char;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -138,7 +139,7 @@ void APP_TimerCallback( uintptr_t context, uint32_t alarmCount )
 
 void APP_Tasks ( void )
 {
-
+    int i = 314;
     /* Check the application's current state. */
     switch ( appData.state )
     {
@@ -150,7 +151,8 @@ void APP_Tasks ( void )
             DRV_TMR_AlarmRegister(appData.tmrHandle, 65500, true, 0, APP_TimerCallback);
             DRV_TMR_AlarmEnable(appData.tmrHandle, true);
             DRV_TMR_Start(appData.tmrHandle);
-setbuf(stdout, NULL);
+/*setbuf(stdout, NULL);*/
+            setbuf(stdout, printf_char);
 
             if (appInitialized)
             {
@@ -165,7 +167,8 @@ setbuf(stdout, NULL);
             //printf("sizeshort %d\n", sizeof(short));
           //  printf("sizeint %d\n", sizeof(int));
           //  printf("sizelong %d\n", sizeof(long));
-            printf("hello world");
+            printf("int i = %d\r\n", i);
+            print_str(printf_buffer);
             appData.state = APP_STATE_WAIT_SCAN;
             break;
         }
